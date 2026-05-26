@@ -1,0 +1,515 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# NB: Consider using poEdit <http://poedit.sourceforge.net>
+#
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-04-21 12:36+0200\n"
+"Last-Translator: Marc Worrell <marc@worrell.nl>\n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:17
+#, fuzzy
+msgid "Add a new provider for OpenID authorization via another website."
+msgstr ""
+"Додати нового постачальника для авторизації OpenID через інший веб-сайт."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:120
+#, fuzzy
+msgid ""
+"Add a username/password on signup. A new user will be able to logon with a "
+"username/password."
+msgstr ""
+"Вкажіть ім'я користувача та пароль під час реєстрації. Новий користувач "
+"зможе увійти в систему, вказавши ім'я користувача та пароль."
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:10
+#, fuzzy
+msgid "Added by"
+msgstr "Додано"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:125
+#, fuzzy
+msgid "Allow import of content from the remote website"
+msgstr "Дозволити імпорт вмісту з віддаленого веб-сайту"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:102
+#, fuzzy
+msgid "Allow users on the remote website to authenticate here (using “{code}”)"
+msgstr ""
+"Дозволити користувачам віддаленого веб-сайту проходити автентифікацію тут "
+"(за допомогою «{code}»)"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:14
+#, fuzzy
+msgid ""
+"Allow users registered on the remote website to authenticate on this website."
+msgstr ""
+"Дозволити зареєстрованим на віддаленому веб-сайті користувачам проходити "
+"автентифікацію на цьому веб-сайті."
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:135
+#, fuzzy
+msgid ""
+"An OpenID provider with this name already exists, please use another name."
+msgstr ""
+"Провайдер OpenID з такою назвою вже існує, будь ласка, виберіть іншу назву."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:112
+#, fuzzy
+msgid "An email address must be provided to be able to log in"
+msgstr "Для входу в систему необхідно вказати адресу електронної пошти"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:24
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:38
+#, fuzzy
+msgid "Are you sure you want to delete this OpenID Provider?"
+msgstr "Ви впевнені, що хочете видалити цього постачальника OpenID?"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:9
+msgid "Auth"
+msgstr "Авторизація"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:129
+#, fuzzy
+msgid ""
+"Automatically extend tokens obtained using “{client}” before they expire"
+msgstr ""
+"Автоматично продовжувати термін дії токенів, отриманих за допомогою "
+"«{client}», до закінчення їхнього терміну дії"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:16
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:53
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:55
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:6
+#, fuzzy
+msgid "Check the issuer URL and try again."
+msgstr "Перевірте URL-адресу емітента та спробуйте ще раз."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:60
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:61
+msgid "Client ID"
+msgstr "ID Клієнта"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:69
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:70
+msgid "Client Secret"
+msgstr "Client Secret"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:36
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:36
+msgid "Connect with"
+msgstr "ارتباط با"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:45
+#, fuzzy
+msgid "Could not fetch OpenID configuration from the domain."
+msgstr "Не вдалося отримати налаштування OpenID з домену."
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:138
+#, fuzzy
+msgid "Could not fetch the OpenID configuration from the domain."
+msgstr "Не вдалося отримати налаштування OpenID з домену."
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:140
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:165
+#, fuzzy
+msgid "Could not insert the OpenID provider."
+msgstr "Не вдалося додати постачальника OpenID."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:157
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:183
+#, fuzzy
+msgid "Could not load the OpenID configuration at the domain."
+msgstr "Не вдалося завантажити конфігурацію OpenID для цього домену."
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:153
+#, fuzzy
+msgid "Could not update the OpenID provider."
+msgstr "Не вдалося оновити провайдера OpenID."
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:11
+msgid "Created on"
+msgstr "Створено о"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:21
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:36
+msgid "Delete"
+msgstr "Видалити"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:30
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:40
+#, fuzzy
+msgid "Delete OpenID Provider"
+msgstr "Видалити постачальника OpenID"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:7
+msgid "Description"
+msgstr "Опис"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:31
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:32
+#, fuzzy
+msgid "Description - shows up on button"
+msgstr "Опис — відображається на кнопці"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:17
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:19
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:17
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:19
+msgid "Disconnect"
+msgstr "Відключити"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:14
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:14
+#, fuzzy
+msgid "Disconnect from"
+msgstr "Відключити"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:37
+#, fuzzy
+msgid "Display order on login screen"
+msgstr "Порядок відображення на екрані входу"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:18
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:18
+#, fuzzy
+msgid "Do you want to disconnect your account?"
+msgstr "Ви хочете видалити свій обліковий запис?"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:6
+msgid "Domain"
+msgstr "Домен"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:198
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:199
+msgid "Domains"
+msgstr "Домени"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:39
+#, fuzzy
+msgid "Edit OpenID Provider"
+msgstr "Редагувати постачальника OpenID"
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:129
+#, fuzzy
+msgid "Edit OpenID provider details"
+msgstr "Редагувати дані про постачальника OpenID"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:33
+#, fuzzy
+msgid "Edit provider"
+msgstr "Редагувати постачальника"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:164
+#, fuzzy
+msgid "Elevated ACR values"
+msgstr "Підвищені показники ACR"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:165
+#, fuzzy
+msgid ""
+"Elevated Authentication Context Class References for using this provider."
+msgstr ""
+"Посилання на клас підвищеного контексту автентифікації для використання "
+"цього постачальника."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:24
+#, fuzzy
+msgid "Enable this provider"
+msgstr "Увімкнути цей постачальник"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:4
+msgid "Enabled"
+msgstr "Увімкнути"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:214
+#, fuzzy
+msgid ""
+"If the OIDC login is a new signup then this will be the category of the "
+"newly created user resource. Defaults to <tt>person</tt>."
+msgstr ""
+"Якщо вхід в OIDC здійснюється під час нової реєстрації, це буде категорією "
+"новоствореного ресурсу користувача. За замовчуванням встановлено значення "
+"<tt>«person</tt>»."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:192
+#, fuzzy
+msgid ""
+"If the server does not return the organization and the returned email "
+"address is verified, then the email domain is used as organization."
+msgstr ""
+"Якщо сервер не повертає назву організації, а надана адреса електронної пошти "
+"підтверджена, то домен електронної пошти використовується як назва "
+"організації."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:139
+#, fuzzy
+msgid "Information we request access to. Defaults to <tt>openid email</tt>."
+msgstr ""
+"Інформація, доступ до якої ми запитуємо. За замовчуванням — <tt>електронна "
+"адреса OpenID</tt>."
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:34
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:35
+#, fuzzy
+msgid "Issuer Domain (eg. www.example.com)"
+msgstr "Домен емітента (наприклад, www.example.com)"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:8
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:16
+#, fuzzy
+msgid "Issuer URL"
+msgstr "URL-адреса емітента"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:13
+#, fuzzy
+msgid "Issuer domain"
+msgstr "Домен емітента"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:37
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:37
+#, fuzzy
+msgid "Log in with"
+msgstr "Увійти за допомогою"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:51
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:52
+#, fuzzy
+msgid "Logo URL or path"
+msgstr "URL-адреса або шлях до логотипу"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:5
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:22
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:23
+msgid "Name"
+msgstr "Ім'я"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:47
+#, fuzzy
+msgid "No providers configured."
+msgstr "Постачальники не налаштовані."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:179
+#, fuzzy
+msgid "No supported ACR values found."
+msgstr "Не знайдено жодних значень ACR, що відповідають вимогам."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:153
+#, fuzzy
+msgid "No supported scopes found."
+msgstr "Не знайдено жодних підтримуваних областей застосування."
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:53
+#, fuzzy
+msgid "Not allowed."
+msgstr "Не дозволяється."
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:54
+#, fuzzy
+msgid "Only admnistrators can view OpenID Providers."
+msgstr "Переглядати постачальників OpenID можуть лише адміністратори."
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:176
+#, fuzzy
+msgid "OpenID Connect Providers"
+msgstr "Провайдери OpenID Connect"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:50
+#, fuzzy
+msgid "OpenID Provider not found, or no view permission."
+msgstr "Не знайдено постачальника OpenID або відсутні права на перегляд."
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:3
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:7
+#, fuzzy
+msgid "OpenID Providers"
+msgstr "Провайдери OpenID"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:190
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:191
+msgid "Organizations"
+msgstr "Організації"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:192
+#, fuzzy
+msgid ""
+"Organizations acceptable for authentication using this OpenID provider. One "
+"of these must match the returned <tt>shacHomeOrganization</tt>. Separate "
+"multiple organizations with a comma, newline or spaces."
+msgstr ""
+"Організації, які допускаються до автентифікації за допомогою цього "
+"постачальника OpenID. Одна з них повинна збігатися з повернутим значенням "
+"<tt>shacHomeOrganization</tt>. Кілька організацій слід розділяти комою, "
+"символом нового рядка або пробілами."
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:46
+#, fuzzy
+msgid "Please double check the domain name."
+msgstr "Будь ласка, ще раз перевірте ім'я домену."
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:51
+#, fuzzy
+msgid "Please provide a unique name."
+msgstr "Будь ласка, вкажіть унікальне ім'я."
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:21
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:25
+#, fuzzy
+msgid "Register a new provider"
+msgstr "Зареєструвати нового постачальника"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:56
+#, fuzzy
+msgid "Register and edit"
+msgstr "Зареєструватися та редагувати"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:138
+#, fuzzy
+msgid "Scopes requested"
+msgstr "Запитані обсяги"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:205
+#, fuzzy
+msgid "Signup category"
+msgstr "Категорія реєстрації"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:5
+#, fuzzy
+msgid "The configuration could not be loaded."
+msgstr "Не вдалося завантажити конфігурацію."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:200
+#, fuzzy
+msgid ""
+"The email domains this provider should handle. Users with one of these "
+"domains as their primary email address will be redirected to this provider. "
+"Separate multiple domains with a comma, newline or spaces."
+msgstr ""
+"Домени електронної пошти, які повинен обслуговувати цей провайдер. "
+"Користувачі, чия основна адреса електронної пошти належить до одного з цих "
+"доменів, будуть перенаправлені до цього провайдера. Кілька доменів слід "
+"розділяти комою, символом нового рядка або пробілами."
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:47
+#, fuzzy
+msgid "The redirect URL for the configuration of providers is:"
+msgstr "URL-адреса перенаправлення для налаштування постачальників:"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:89
+#, fuzzy
+msgid ""
+"The “{code}” method redirects the user to the remote website to obtain an "
+"access token. “{client}” allows an admin user to directly fetch a token from "
+"the remote website."
+msgstr ""
+"Метод «{code}» перенаправляє користувача на віддалений веб-сайт для "
+"отримання токена доступу. Метод «{client}» дозволяє адміністратору "
+"безпосередньо отримати токен з віддаленого веб-сайту."
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:50
+#, fuzzy
+msgid "There is already a configuration with this name."
+msgstr "Конфігурація з такою назвою вже існує."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:98
+#, fuzzy
+msgid ""
+"This is a test server, will only be available on development and test sites"
+msgstr ""
+"Це тестовий сервер, який буде доступний лише на сайтах розробки та тестування"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:28
+#, fuzzy
+msgid ""
+"This must be an unique name to identify the remote service. This can not be "
+"changed. Only a-z, A-Z, 0-9, _ and - are allowed."
+msgstr ""
+"Це має бути унікальне ім'я для ідентифікації віддаленої служби. Його "
+"неможливо змінити. Допускаються лише символи a-z, A-Z, 0-9, _ та -."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:108
+#, fuzzy
+msgid ""
+"This server provides additional user information, like the user’s name and "
+"email address"
+msgstr ""
+"Цей сервер надає додаткову інформацію про користувача, таку як ім’я та "
+"адреса електронної пошти"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:27
+#, fuzzy
+msgid "This will disconnect all tokens and users."
+msgstr "Це призведе до відключення всіх токенів і користувачів."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:78
+#, fuzzy
+msgid "Token grant method"
+msgstr "Метод розподілу токенів"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:116
+#, fuzzy
+msgid ""
+"Trust that all email addresses are verified by the server’s administrator."
+msgstr ""
+"Будьте впевнені, що всі адреси електронної пошти перевірені адміністратором "
+"сервера."
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:18
+msgid "Update"
+msgstr "Оновити"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:9
+#, fuzzy
+msgid "Update provider for OpenID authorization via another website."
+msgstr "Постачальник оновлень для авторизації OpenID через інший веб-сайт."
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:12
+#, fuzzy
+msgid "User count"
+msgstr "Кількість користувачів"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:10
+#, fuzzy
+msgid "With an OpenID Provider token this website can:"
+msgstr "За допомогою токена провайдера OpenID цей веб-сайт може:"
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:143
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:156
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:168
+#, fuzzy
+msgid "You are not allowed to change OpenID provider."
+msgstr "Ви не можете змінити постачальника OpenID."
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:40
+#, fuzzy
+msgid ""
+"You can also add an optional path to the domain. For example: "
+"<tt>example.com/v2/</tt>"
+msgstr ""
+"Ви також можете додати додатковий шлях до домену. Наприклад: <tt>example.com/"
+"v2/</tt>"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:33
+#, fuzzy
+msgid "d M Y, H:i"
+msgstr "д М Й, год:хв"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:81
+msgid "default"
+msgstr "за замовчуванням"

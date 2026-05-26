@@ -1,0 +1,11 @@
+{application, zotonic_mod_sso_openidc, [
+    {description, "Use OpenID Connect services for Single Sign-On"},
+    {vsn, "git"},
+    {registered, []},
+    {mod, []},
+    {applications, [kernel, stdlib, zotonic_core, oidcc]},
+    {env, []},
+    {modules, []},
+    {maintainers, []},
+    {licenses, ["Apache-2.0"]}
+]}.

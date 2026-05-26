@@ -1,0 +1,12 @@
+%% -*- mode: erlang -*-
+[
+    % Start an authorization request for the given OIDC provider
+    {oauth2_oidc_authorize, ["oauth-service", "authorize", "oidc", provider ],
+                         controller_oauth2_service_authorize,
+                         [ {service_module, z_oidc_oauth_service} ]},
+
+    % Admin interface for administering OIDC providers
+    {admin_oidc_providers, [ "admin", "oidc", "providers" ],
+                        controller_admin,
+                        [ {template, "admin_oidc_providers.tpl"} ]}
+].

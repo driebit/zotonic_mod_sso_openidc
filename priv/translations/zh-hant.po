@@ -1,0 +1,490 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# NB: Consider using poEdit <http://poedit.sourceforge.net>
+#
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-04-21 12:40+0200\n"
+"Last-Translator: Marc Worrell <marc@worrell.nl>\n"
+"Language-Team: \n"
+"Language: zh_HK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:17
+#, fuzzy
+msgid "Add a new provider for OpenID authorization via another website."
+msgstr "新增一個透過其他網站進行 OpenID 授權的服務提供者。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:120
+#, fuzzy
+msgid ""
+"Add a username/password on signup. A new user will be able to logon with a "
+"username/password."
+msgstr "註冊時請設定使用者名稱與密碼。新使用者將能使用使用者名稱與密碼登入。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:10
+msgid "Added by"
+msgstr "增加者"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:125
+#, fuzzy
+msgid "Allow import of content from the remote website"
+msgstr "允許從遠端網站匯入內容"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:102
+#, fuzzy
+msgid "Allow users on the remote website to authenticate here (using “{code}”)"
+msgstr "允許遠端網站的使用者在此進行驗證（使用「{code}」）"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:14
+#, fuzzy
+msgid ""
+"Allow users registered on the remote website to authenticate on this website."
+msgstr "允許在遠端網站註冊的使用者在本網站進行驗證。"
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:135
+#, fuzzy
+msgid ""
+"An OpenID provider with this name already exists, please use another name."
+msgstr "已經存在一個同名的 OpenID 提供者，請使用其他名稱。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:112
+#, fuzzy
+msgid "An email address must be provided to be able to log in"
+msgstr "必須提供電子郵件地址才能登入"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:24
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:38
+#, fuzzy
+msgid "Are you sure you want to delete this OpenID Provider?"
+msgstr "您確定要刪除此 OpenID 提供者嗎？"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:9
+#, fuzzy
+msgid "Auth"
+msgstr "作者"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:129
+#, fuzzy
+msgid ""
+"Automatically extend tokens obtained using “{client}” before they expire"
+msgstr "在過期前自動延長使用「{client}」取得的代幣"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:16
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:53
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:55
+msgid "Cancel"
+msgstr "取消"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:6
+#, fuzzy
+msgid "Check the issuer URL and try again."
+msgstr "請檢查發行者網址，然後再試一次。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:60
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:61
+msgid "Client ID"
+msgstr "用戶端 ID"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:69
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:70
+msgid "Client Secret"
+msgstr "用戶端密鑰"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:36
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:36
+msgid "Connect with"
+msgstr "透過社群網站登入"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:45
+#, fuzzy
+msgid "Could not fetch OpenID configuration from the domain."
+msgstr "無法從該網域取得 OpenID 設定。"
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:138
+#, fuzzy
+msgid "Could not fetch the OpenID configuration from the domain."
+msgstr "無法從該網域取得 OpenID 設定。"
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:140
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:165
+#, fuzzy
+msgid "Could not insert the OpenID provider."
+msgstr "無法插入 OpenID 提供者。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:157
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:183
+#, fuzzy
+msgid "Could not load the OpenID configuration at the domain."
+msgstr "無法在該網域載入 OpenID 設定。"
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:153
+#, fuzzy
+msgid "Could not update the OpenID provider."
+msgstr "無法更新 OpenID 提供者。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:11
+msgid "Created on"
+msgstr "建立於"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:21
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:36
+msgid "Delete"
+msgstr "刪除"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:30
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:40
+#, fuzzy
+msgid "Delete OpenID Provider"
+msgstr "刪除 OpenID 提供者"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:7
+#, fuzzy
+msgid "Description"
+msgstr "描述"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:31
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:32
+#, fuzzy
+msgid "Description - shows up on button"
+msgstr "說明 - 顯示於按鈕上"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:17
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:19
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:17
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:19
+msgid "Disconnect"
+msgstr "中斷連線"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:14
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:14
+#, fuzzy
+msgid "Disconnect from"
+msgstr "斷開與"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:37
+#, fuzzy
+msgid "Display order on login screen"
+msgstr "登入畫面上的顯示順序"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:18
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:18
+#, fuzzy
+msgid "Do you want to disconnect your account?"
+msgstr "您要解除帳戶連結嗎？"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:6
+msgid "Domain"
+msgstr "網域"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:198
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:199
+msgid "Domains"
+msgstr "網域"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:39
+#, fuzzy
+msgid "Edit OpenID Provider"
+msgstr "編輯 OpenID 提供者"
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:129
+#, fuzzy
+msgid "Edit OpenID provider details"
+msgstr "編輯 OpenID 提供者詳細資訊"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:33
+#, fuzzy
+msgid "Edit provider"
+msgstr "編輯供應商"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:164
+#, fuzzy
+msgid "Elevated ACR values"
+msgstr "ACR 數值升高"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:165
+#, fuzzy
+msgid ""
+"Elevated Authentication Context Class References for using this provider."
+msgstr "有關如何使用此提供者的詳細資訊，請參閱《提升的驗證上下文類別》一文。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:24
+#, fuzzy
+msgid "Enable this provider"
+msgstr "啟用此提供者"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:4
+msgid "Enabled"
+msgstr "啟用"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:214
+#, fuzzy
+msgid ""
+"If the OIDC login is a new signup then this will be the category of the "
+"newly created user resource. Defaults to <tt>person</tt>."
+msgstr ""
+"若 OIDC 登入屬於新註冊，則此處將為新建立的使用者資源所屬的類別。預設值為"
+"<tt>person</tt>。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:192
+#, fuzzy
+msgid ""
+"If the server does not return the organization and the returned email "
+"address is verified, then the email domain is used as organization."
+msgstr ""
+"如果伺服器未回傳組織名稱，且回傳的電子郵件地址已通過驗證，則會將該電子郵件網"
+"域視為組織名稱。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:139
+#, fuzzy
+msgid "Information we request access to. Defaults to <tt>openid email</tt>."
+msgstr "我們要求存取的資訊。預設為<tt>OpenID 電子郵件</tt>。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:34
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:35
+#, fuzzy
+msgid "Issuer Domain (eg. www.example.com)"
+msgstr "發行者網域（例如：www.example.com）"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:8
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:16
+#, fuzzy
+msgid "Issuer URL"
+msgstr "發行者網址"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:13
+#, fuzzy
+msgid "Issuer domain"
+msgstr "發行者網域"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:37
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:37
+#, fuzzy
+msgid "Log in with"
+msgstr "請使用以下帳號登入"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:51
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:52
+#, fuzzy
+msgid "Logo URL or path"
+msgstr "標誌的網址或路徑"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:5
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:22
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:23
+msgid "Name"
+msgstr "名稱"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:47
+#, fuzzy
+msgid "No providers configured."
+msgstr "尚未設定任何供應商。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:179
+#, fuzzy
+msgid "No supported ACR values found."
+msgstr "未找到任何受支援的 ACR 值。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:153
+#, fuzzy
+msgid "No supported scopes found."
+msgstr "未找到任何受支援的範圍。"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:53
+msgid "Not allowed."
+msgstr "不允許."
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:54
+#, fuzzy
+msgid "Only admnistrators can view OpenID Providers."
+msgstr "只有管理員才能查看 OpenID 提供者。"
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:176
+#, fuzzy
+msgid "OpenID Connect Providers"
+msgstr "OpenID Connect 提供者"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:50
+#, fuzzy
+msgid "OpenID Provider not found, or no view permission."
+msgstr "找不到 OpenID 提供者，或無檢視權限。"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:3
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:7
+#, fuzzy
+msgid "OpenID Providers"
+msgstr "OpenID 提供者"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:190
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:191
+msgid "Organizations"
+msgstr "主辦單位"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:192
+#, fuzzy
+msgid ""
+"Organizations acceptable for authentication using this OpenID provider. One "
+"of these must match the returned <tt>shacHomeOrganization</tt>. Separate "
+"multiple organizations with a comma, newline or spaces."
+msgstr ""
+"可透過此 OpenID 提供者進行驗證的組織。其中一個必須與回傳的"
+"<tt>shacHomeOrganization</tt> 相符。若有多個組織，請以逗號、換行符或空格分"
+"隔。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:46
+#, fuzzy
+msgid "Please double check the domain name."
+msgstr "請再次確認網域名稱。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:51
+#, fuzzy
+msgid "Please provide a unique name."
+msgstr "請輸入一個唯一的名稱。"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:21
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:25
+#, fuzzy
+msgid "Register a new provider"
+msgstr "註冊新供應商"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:56
+#, fuzzy
+msgid "Register and edit"
+msgstr "註冊與編輯"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:138
+#, fuzzy
+msgid "Scopes requested"
+msgstr "所需範圍"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:205
+#, fuzzy
+msgid "Signup category"
+msgstr "註冊類別"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:5
+#, fuzzy
+msgid "The configuration could not be loaded."
+msgstr "無法載入設定。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:200
+#, fuzzy
+msgid ""
+"The email domains this provider should handle. Users with one of these "
+"domains as their primary email address will be redirected to this provider. "
+"Separate multiple domains with a comma, newline or spaces."
+msgstr ""
+"此服務提供者應處理的電子郵件網域。若使用者將其中任一網域設為主要電子郵件地"
+"址，系統將自動將其轉發至此服務提供者。若需指定多個網域，請以逗號、換行符或空"
+"格分隔。"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:47
+#, fuzzy
+msgid "The redirect URL for the configuration of providers is:"
+msgstr "提供者設定的重定向網址為："
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:89
+#, fuzzy
+msgid ""
+"The “{code}” method redirects the user to the remote website to obtain an "
+"access token. “{client}” allows an admin user to directly fetch a token from "
+"the remote website."
+msgstr ""
+"「{code}」方法會將使用者重定向至遠端網站以取得存取憑證。「{client}」則允許管"
+"理員直接從遠端網站取得憑證。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:50
+#, fuzzy
+msgid "There is already a configuration with this name."
+msgstr "已經存在一個同名的設定。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:98
+#, fuzzy
+msgid ""
+"This is a test server, will only be available on development and test sites"
+msgstr "這是測試伺服器，僅限於開發與測試網站使用"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:28
+#, fuzzy
+msgid ""
+"This must be an unique name to identify the remote service. This can not be "
+"changed. Only a-z, A-Z, 0-9, _ and - are allowed."
+msgstr ""
+"此名稱必須是唯一的名稱，用以識別遠端服務。此名稱無法變更。僅允許使用 a-z、A-"
+"Z、0-9、_ 和 -。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:108
+#, fuzzy
+msgid ""
+"This server provides additional user information, like the user’s name and "
+"email address"
+msgstr "此伺服器會提供額外的使用者資訊，例如使用者的姓名和電子郵件地址"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:27
+#, fuzzy
+msgid "This will disconnect all tokens and users."
+msgstr "這將斷開所有代幣與使用者的連線。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:78
+#, fuzzy
+msgid "Token grant method"
+msgstr "代幣發放方式"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:116
+#, fuzzy
+msgid ""
+"Trust that all email addresses are verified by the server’s administrator."
+msgstr "請相信所有電子郵件地址均已由伺服器管理員驗證。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:18
+#, fuzzy
+msgid "Update"
+msgstr "更新"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:9
+#, fuzzy
+msgid "Update provider for OpenID authorization via another website."
+msgstr "透過其他網站進行 OpenID 授權的更新提供者。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:12
+#, fuzzy
+msgid "User count"
+msgstr "使用者人數"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:10
+#, fuzzy
+msgid "With an OpenID Provider token this website can:"
+msgstr "透過 OpenID 提供者代幣，本網站可以："
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:143
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:156
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:168
+#, fuzzy
+msgid "You are not allowed to change OpenID provider."
+msgstr "您無法變更 OpenID 提供者。"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:40
+#, fuzzy
+msgid ""
+"You can also add an optional path to the domain. For example: "
+"<tt>example.com/v2/</tt>"
+msgstr "您也可以為網域新增一個可選的路徑。例如：<tt>example.com/v2/</tt>"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:33
+#, fuzzy
+msgid "d M Y, H:i"
+msgstr "d M Y, H:i"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:81
+msgid "default"
+msgstr "預設"

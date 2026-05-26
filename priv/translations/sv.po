@@ -1,0 +1,515 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# NB: Consider using poEdit <http://poedit.sourceforge.net>
+#
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-04-21 12:36+0200\n"
+"Last-Translator: Marc Worrell <marc@worrell.nl>\n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:17
+#, fuzzy
+msgid "Add a new provider for OpenID authorization via another website."
+msgstr ""
+"Lägg till en ny leverantör för OpenID-autentisering via en annan webbplats."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:120
+#, fuzzy
+msgid ""
+"Add a username/password on signup. A new user will be able to logon with a "
+"username/password."
+msgstr ""
+"Ange ett användarnamn och lösenord vid registreringen. En ny användare "
+"kommer då att kunna logga in med sitt användarnamn och lösenord."
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:10
+msgid "Added by"
+msgstr "Tillagd av"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:125
+#, fuzzy
+msgid "Allow import of content from the remote website"
+msgstr "Tillåt import av innehåll från den externa webbplatsen"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:102
+#, fuzzy
+msgid "Allow users on the remote website to authenticate here (using “{code}”)"
+msgstr ""
+"Tillåt användare på den externa webbplatsen att logga in här (med hjälp av "
+"”{code}”)"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:14
+#, fuzzy
+msgid ""
+"Allow users registered on the remote website to authenticate on this website."
+msgstr ""
+"Tillåt användare som är registrerade på den externa webbplatsen att logga in "
+"på denna webbplats."
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:135
+#, fuzzy
+msgid ""
+"An OpenID provider with this name already exists, please use another name."
+msgstr ""
+"Det finns redan en OpenID-leverantör med det namnet. Välj ett annat namn."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:112
+#, fuzzy
+msgid "An email address must be provided to be able to log in"
+msgstr "Du måste ange en e-postadress för att kunna logga in"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:24
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:38
+#, fuzzy
+msgid "Are you sure you want to delete this OpenID Provider?"
+msgstr "Är du säker på att du vill ta bort den här OpenID-leverantören?"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:9
+msgid "Auth"
+msgstr "Auth"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:129
+#, fuzzy
+msgid ""
+"Automatically extend tokens obtained using “{client}” before they expire"
+msgstr ""
+"Förläng automatiskt giltighetstiden för tokens som erhållits med hjälp av "
+"\"{client}\" innan de löper ut"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:16
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:53
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:55
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:6
+#, fuzzy
+msgid "Check the issuer URL and try again."
+msgstr "Kontrollera utgivarens webbadress och försök igen."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:60
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:61
+msgid "Client ID"
+msgstr "Klient ID"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:69
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:70
+msgid "Client Secret"
+msgstr "Klient-hemlighet"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:36
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:36
+#, fuzzy
+msgid "Connect with"
+msgstr "Håll kontakten med"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:45
+#, fuzzy
+msgid "Could not fetch OpenID configuration from the domain."
+msgstr "Det gick inte att hämta OpenID-konfigurationen från domänen."
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:138
+#, fuzzy
+msgid "Could not fetch the OpenID configuration from the domain."
+msgstr "Det gick inte att hämta OpenID-konfigurationen från domänen."
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:140
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:165
+#, fuzzy
+msgid "Could not insert the OpenID provider."
+msgstr "Det gick inte att lägga till OpenID-leverantören."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:157
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:183
+#, fuzzy
+msgid "Could not load the OpenID configuration at the domain."
+msgstr "Det gick inte att ladda OpenID-konfigurationen för domänen."
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:153
+#, fuzzy
+msgid "Could not update the OpenID provider."
+msgstr "Det gick inte att uppdatera OpenID-leverantören."
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:11
+msgid "Created on"
+msgstr "Skapad den"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:21
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:36
+msgid "Delete"
+msgstr "Radera"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:30
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:40
+#, fuzzy
+msgid "Delete OpenID Provider"
+msgstr "Ta bort OpenID-leverantör"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:7
+msgid "Description"
+msgstr "Beskrivning"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:31
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:32
+#, fuzzy
+msgid "Description - shows up on button"
+msgstr "Beskrivning – visas på knappen"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:17
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:19
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:17
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:19
+#, fuzzy
+msgid "Disconnect"
+msgstr "Koppla från"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:14
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:14
+#, fuzzy
+msgid "Disconnect from"
+msgstr "Logga ut från"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:37
+#, fuzzy
+msgid "Display order on login screen"
+msgstr "Visningsordning på inloggningsskärmen"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:18
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:18
+#, fuzzy
+msgid "Do you want to disconnect your account?"
+msgstr "Vill du avsluta ditt konto?"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:6
+msgid "Domain"
+msgstr "Domän"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:198
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:199
+msgid "Domains"
+msgstr "Domäner"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:39
+#, fuzzy
+msgid "Edit OpenID Provider"
+msgstr "Redigera OpenID-leverantör"
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:129
+#, fuzzy
+msgid "Edit OpenID provider details"
+msgstr "Redigera uppgifter om OpenID-leverantören"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:33
+msgid "Edit provider"
+msgstr "Redigera typ"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:164
+#, fuzzy
+msgid "Elevated ACR values"
+msgstr "Förhöjda ACR-värden"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:165
+#, fuzzy
+msgid ""
+"Elevated Authentication Context Class References for using this provider."
+msgstr ""
+"Förbättrad autentiseringskontext – Klassreferenser för användning av denna "
+"leverantör."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:24
+#, fuzzy
+msgid "Enable this provider"
+msgstr "Aktivera denna leverantör"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:4
+msgid "Enabled"
+msgstr "Aktiverad"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:214
+#, fuzzy
+msgid ""
+"If the OIDC login is a new signup then this will be the category of the "
+"newly created user resource. Defaults to <tt>person</tt>."
+msgstr ""
+"Om inloggningen via OIDC sker vid en ny registrering kommer detta att vara "
+"kategorin för den nyskapade användarresursen. Standardvärdet är <tt>person</"
+"tt>."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:192
+#, fuzzy
+msgid ""
+"If the server does not return the organization and the returned email "
+"address is verified, then the email domain is used as organization."
+msgstr ""
+"Om servern inte returnerar någon organisationsuppgift och den returnerade e-"
+"postadressen är verifierad, används e-postdomänen som organisation."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:139
+#, fuzzy
+msgid "Information we request access to. Defaults to <tt>openid email</tt>."
+msgstr ""
+"Information som vi begär åtkomst till. Standardinställningen är <tt>OpenID-e-"
+"postadressen</tt>."
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:34
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:35
+#, fuzzy
+msgid "Issuer Domain (eg. www.example.com)"
+msgstr "Utfärdarens domän (t.ex. www.example.com)"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:8
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:16
+#, fuzzy
+msgid "Issuer URL"
+msgstr "Emittentens webbadress"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:13
+#, fuzzy
+msgid "Issuer domain"
+msgstr "Utfärdarens domän"
+
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:37
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:37
+msgid "Log in with"
+msgstr "Logga in med"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:51
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:52
+#, fuzzy
+msgid "Logo URL or path"
+msgstr "Logotypens URL eller sökväg"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:5
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:22
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:23
+msgid "Name"
+msgstr "Namn"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:47
+#, fuzzy
+msgid "No providers configured."
+msgstr "Inga leverantörer har konfigurerats."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:179
+#, fuzzy
+msgid "No supported ACR values found."
+msgstr "Inga ACR-värden som stöds hittades."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:153
+#, fuzzy
+msgid "No supported scopes found."
+msgstr "Inga kompatibla omfattningar hittades."
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:53
+#, fuzzy
+msgid "Not allowed."
+msgstr "Det är inte tillåtet."
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:54
+#, fuzzy
+msgid "Only admnistrators can view OpenID Providers."
+msgstr "Endast administratörer kan se OpenID-leverantörer."
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:176
+#, fuzzy
+msgid "OpenID Connect Providers"
+msgstr "OpenID Connect-leverantörer"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:50
+#, fuzzy
+msgid "OpenID Provider not found, or no view permission."
+msgstr "OpenID-leverantör hittades inte, eller så saknas behörighet att visa."
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:3
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:7
+#, fuzzy
+msgid "OpenID Providers"
+msgstr "OpenID-leverantörer"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:190
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:191
+msgid "Organizations"
+msgstr "Organisationer"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:192
+#, fuzzy
+msgid ""
+"Organizations acceptable for authentication using this OpenID provider. One "
+"of these must match the returned <tt>shacHomeOrganization</tt>. Separate "
+"multiple organizations with a comma, newline or spaces."
+msgstr ""
+"Organisationer som godkänns för autentisering via denna OpenID-leverantör. "
+"En av dessa måste stämma överens med det returnerade värdet för "
+"<tt>shacHomeOrganization</tt>. Avgränsa flera organisationer med "
+"kommatecken, radbrytning eller mellanslag."
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:46
+#, fuzzy
+msgid "Please double check the domain name."
+msgstr "Kontrollera domännamnet noga."
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:51
+#, fuzzy
+msgid "Please provide a unique name."
+msgstr "Ange ett unikt namn."
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:21
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:25
+#, fuzzy
+msgid "Register a new provider"
+msgstr "Registrera en ny leverantör"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:56
+#, fuzzy
+msgid "Register and edit"
+msgstr "Registrera dig och redigera"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:138
+#, fuzzy
+msgid "Scopes requested"
+msgstr "Begärda omfattningar"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:205
+#, fuzzy
+msgid "Signup category"
+msgstr "Registreringskategori"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:5
+#, fuzzy
+msgid "The configuration could not be loaded."
+msgstr "Konfigurationen kunde inte laddas."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:200
+#, fuzzy
+msgid ""
+"The email domains this provider should handle. Users with one of these "
+"domains as their primary email address will be redirected to this provider. "
+"Separate multiple domains with a comma, newline or spaces."
+msgstr ""
+"De e-postdomäner som denna leverantör ska hantera. Användare som har någon "
+"av dessa domäner som sin primära e-postadress kommer att omdirigeras till "
+"denna leverantör. Avskilj flera domäner med kommatecken, radbrytning eller "
+"mellanslag."
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:47
+#, fuzzy
+msgid "The redirect URL for the configuration of providers is:"
+msgstr "Omdirigeringsadressen för konfigurationen av leverantörer är:"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:89
+#, fuzzy
+msgid ""
+"The “{code}” method redirects the user to the remote website to obtain an "
+"access token. “{client}” allows an admin user to directly fetch a token from "
+"the remote website."
+msgstr ""
+"Metoden \"{code}\" omdirigerar användaren till den externa webbplatsen för "
+"att hämta en åtkomsttoken. Metoden \"{client}\" gör det möjligt för en "
+"administratör att direkt hämta en token från den externa webbplatsen."
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:50
+#, fuzzy
+msgid "There is already a configuration with this name."
+msgstr "Det finns redan en konfiguration med det namnet."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:98
+#, fuzzy
+msgid ""
+"This is a test server, will only be available on development and test sites"
+msgstr ""
+"Detta är en testserver som endast kommer att vara tillgänglig på "
+"utvecklings- och testsajter"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:28
+#, fuzzy
+msgid ""
+"This must be an unique name to identify the remote service. This can not be "
+"changed. Only a-z, A-Z, 0-9, _ and - are allowed."
+msgstr ""
+"Detta måste vara ett unikt namn för att identifiera fjärrtjänsten. Det går "
+"inte att ändra. Endast bokstäverna a–z, A–Z, siffrorna 0–9 samt tecknen _ "
+"och - är tillåtna."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:108
+#, fuzzy
+msgid ""
+"This server provides additional user information, like the user’s name and "
+"email address"
+msgstr ""
+"Denna server tillhandahåller ytterligare användarinformation, såsom "
+"användarens namn och e-postadress"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:27
+#, fuzzy
+msgid "This will disconnect all tokens and users."
+msgstr "Detta kommer att koppla bort alla tokens och användare."
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:78
+#, fuzzy
+msgid "Token grant method"
+msgstr "Metod för tilldelning av token"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:116
+#, fuzzy
+msgid ""
+"Trust that all email addresses are verified by the server’s administrator."
+msgstr ""
+"Du kan lita på att alla e-postadresser har verifierats av "
+"serveradministratören."
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:18
+msgid "Update"
+msgstr "Uppdatera"
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider.tpl:9
+#, fuzzy
+msgid "Update provider for OpenID authorization via another website."
+msgstr ""
+"Uppdateringsleverantör för OpenID-autentisering via en annan webbplats."
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:12
+msgid "User count"
+msgstr "Användarantal"
+
+#: zotonic_mod_sso_openidc/priv/templates/admin_oidc_providers.tpl:10
+#, fuzzy
+msgid "With an OpenID Provider token this website can:"
+msgstr "Med ett OpenID-leverantörstoken kan denna webbplats:"
+
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:143
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:156
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:168
+#, fuzzy
+msgid "You are not allowed to change OpenID provider."
+msgstr "Du får inte byta OpenID-leverantör."
+
+#: zotonic_mod_sso_openidc/priv/templates/_dialog_oidc_provider_new.tpl:40
+#, fuzzy
+msgid ""
+"You can also add an optional path to the domain. For example: "
+"<tt>example.com/v2/</tt>"
+msgstr ""
+"Du kan också lägga till en valfri sökväg till domänen. Till exempel: "
+"<tt>example.com/v2/</tt>"
+
+#: zotonic_mod_sso_openidc/priv/templates/_admin_oidc_providers_list.tpl:33
+#, fuzzy
+msgid "d M Y, H:i"
+msgstr "d M Y, H:i"
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:81
+msgid "default"
+msgstr "standard"
