@@ -260,9 +260,27 @@ observe_auth_postcheck(#auth_postcheck{ service = mod_sso_openidc, service_uid =
         ControllingProviders ->
             case binary:split(ServiceUid, <<":">>) of
                 [ServiceProvider, _] ->
+                    % Fail if there is another service provider claiming control
+                    % of the user's email domain. This is an ambigous situation which
+                    % should be fixed in the configuration.
                     case lists:any(
                         fun(#{ name := ProviderName }) ->
-                            ServiceProvider =/= z_convert:to_binary(ProviderName)
+                            case ServiceProvider =/= z_convert:to_binary(ProviderName) of
+                                true ->
+                                    ?LOG_WARNING(#{
+                                        in => zotonic_mod_sso_openidc,
+                                        text => <<"Found controlling OIDC provider configuration for user">>,
+                                        result => error,
+                                        reason => user_external,
+                                        user_id => Id,
+                                        user_email => MaybeEmail,
+                                        service_provider => ServiceProvider,
+                                        controlling_provider => ProviderName
+                                    }),
+                                    true;
+                                false ->
+                                    false
+                            end
                         end,
                         ControllingProviders)
                     of
