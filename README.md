@@ -66,7 +66,7 @@ Section 3.1.1 lists the process:
    `do_auth_user/2` function in `mod_identity_oidc_or`. This function sets up an
    `auth_validated` record, containing the following fields:
    - `service` - `mod_sso_openidc`
-   - `service_uid` - Provider name and Subject ID (openid `sub` claim, user id unique per provider)
+   - `service_uid` - ProviderName:SubjectID (openid `sub` claim, user id unique per provider)
    - `service_props` - Contents of the token holding the authentication claims
    - `props` - Zotonic Person properties derived from the claims
 2. The module `mod_authentication` looks up the user identity (`service_uid`) in the `identity` table

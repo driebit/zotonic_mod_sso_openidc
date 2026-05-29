@@ -253,11 +253,51 @@ providers_for_username_1(Username, Context) ->
 
 %% @doc Intercept logons for users that have a primary email address matching the
 %% controlled domains of an OpenIDC provider. They should use the OIDC provider to log in.
-observe_auth_postcheck(#auth_postcheck{ id = Id }, Context) ->
-    Email = m_rsc:p_no_acl(Id, <<"email_raw">>, Context),
-    case providers_for_domain(Email, Context) of
+observe_auth_postcheck(#auth_postcheck{ service = mod_sso_openidc, service_uid = ServiceUid, id = Id }, Context) ->
+    MaybeEmail = m_rsc:p_no_acl(Id, <<"email_raw">>, Context),
+    case providers_for_domain(MaybeEmail, Context) of
         [] -> undefined;
-        _Ps -> {error, user_external}
+        ControllingProviders ->
+            case binary:split(ServiceUid, <<":">>) of
+                [ServiceProvider, _] ->
+                    % Fail if there is another service provider claiming control
+                    % of the user's email domain. This is an ambigous situation which
+                    % should be fixed in the configuration.
+                    case lists:any(
+                        fun(#{ name := ProviderName }) ->
+                            case ServiceProvider =/= z_convert:to_binary(ProviderName) of
+                                true ->
+                                    ?LOG_WARNING(#{
+                                        in => zotonic_mod_sso_openidc,
+                                        text => <<"Found controlling OIDC provider configuration for user">>,
+                                        result => error,
+                                        reason => user_external,
+                                        user_id => Id,
+                                        user_email => MaybeEmail,
+                                        service_provider => ServiceProvider,
+                                        controlling_provider => ProviderName
+                                    }),
+                                    true;
+                                false ->
+                                    false
+                            end
+                        end,
+                        ControllingProviders)
+                    of
+                        true ->
+                            {error, user_external};
+                        false ->
+                            undefined
+                    end;
+                _ ->
+                    {error, service_uid_invalid}
+            end
+    end;
+observe_auth_postcheck(#auth_postcheck{ id = Id }, Context) ->
+    MaybeEmail = m_rsc:p_no_acl(Id, <<"email_raw">>, Context),
+    case providers_for_domain(MaybeEmail, Context) of
+        [] -> undefined;
+        _ControllingProviders -> {error, user_external}
     end.
 
 providers_for_domain(undefined, _Context) ->
