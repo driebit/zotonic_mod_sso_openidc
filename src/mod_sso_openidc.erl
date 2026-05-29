@@ -264,7 +264,7 @@ observe_auth_postcheck(#auth_postcheck{ service = mod_sso_openidc, service_uid =
                     % of the user's email domain. This is an ambigous situation which
                     % should be fixed in the configuration.
                     case lists:any(
-                        fun(#{ name := ProviderName }) ->
+                        fun(#{ <<"name">> := ProviderName }) ->
                             case ServiceProvider =/= z_convert:to_binary(ProviderName) of
                                 true ->
                                     ?LOG_WARNING(#{
