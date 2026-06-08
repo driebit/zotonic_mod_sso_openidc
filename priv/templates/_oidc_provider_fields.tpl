@@ -37,6 +37,7 @@
             <label class="control-label">{_ Display order on login screen _}</label>
             <select class="form-control" name="priority" style="max-width: 10ch">
                 <option></option>
+                <option value="99" {% if app.priority == 99 %}selected{% endif %}>{_ Hide button _}</option>
                 {% for n in 1|range:20 %}
                     <option value="{{ n }}" {% if app.priority == n %}selected{% endif %}>
                         {{ n }}

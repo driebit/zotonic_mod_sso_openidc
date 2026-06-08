@@ -190,8 +190,14 @@ observe_auth_identity_types(#auth_identity_types{ type = _ }, Types, _Context) -
     Types.
 
 
-%% @doc Pre-check on the two-step logon, Check if the user has an username or primary
-%% email address domain that is controlled by an OpenIDC provider.
+%% @doc Pre-check on the two-step logon.
+%%
+%% Check if logon:
+%% - uses an email address that is controlled by an OpenIDC provider; or
+%% - is connected to a user who has a primary email address that is controlled by an OpenIDC provider; or
+%% - the username is connected to a user with an OpenIDC provider identity.
+%%
+%% If the user's authentication is controlled by the provider, then the local login is disabled.
 observe_logon_options(#logon_options{
             payload = #{
                 <<"username">> := Username,
@@ -200,10 +206,14 @@ observe_logon_options(#logon_options{
         },
         Acc,
         Context) when is_binary(Username) ->
-    case providers_for_username(Username, Context) of
-        [] ->
+    case m_sso_openidc:find_providers_by_logon_username(Username, Context) of
+        {[], []} ->
+            % No providers controlling the email domain or matching the username, continue
+            % with normal logon options.
             Acc;
-        Ps ->
+        {ControllingProviders, _} ->
+            % There are providers controlling this email domain or matching user's email domains.
+            % The user is not allowed to log in using another method than one of the given providers.
             Acc#{
                 is_username_checked => true,
                 is_user_external => true,
@@ -211,7 +221,19 @@ observe_logon_options(#logon_options{
                 user_external => [
                     #{
                         template => <<"_oidc_logon_external.tpl">>,
-                        apps => Ps
+                        apps => ControllingProviders
+                    }
+                ]
+            };
+        {_, ConnectedProviders} ->
+            % There are providers connected to users with matching email address or username.
+            Acc#{
+                is_username_checked => true,
+                is_user_external => true,
+                user_external => [
+                    #{
+                        template => <<"_oidc_logon_external.tpl">>,
+                        apps => ConnectedProviders
                     }
                 ]
             }
@@ -219,52 +241,19 @@ observe_logon_options(#logon_options{
 observe_logon_options(#logon_options{}, Acc, _Context) ->
     Acc.
 
-%% @doc Check if the given user is using a controlled domain to logon or has a
-%% controlled domain as their primary email address.
-providers_for_username(Username, Context) ->
-    case binary:match(Username, <<"@">>) =/= nomatch of
-        true ->
-            case providers_for_domain(Username, Context) of
-                [] ->
-                    providers_for_username_1(Username, Context);
-                Ps ->
-                    Ps
-            end;
-        false ->
-            providers_for_username_1(Username, Context)
-    end.
-
-providers_for_username_1(Username, Context) ->
-    case m_identity:lookup_by_type_and_key_multi(username_pw, Username, Context) of
-        [] -> [];
-        Idns ->
-            Found = lists:filtermap(
-                fun(Idn) ->
-                    RscId = proplists:get_value(rsc_id, Idn),
-                    Email = m_rsc:p_no_acl(RscId, <<"email_raw">>, Context),
-                    case providers_for_domain(Email, Context) of
-                        [] -> false;
-                        Ps -> {true, Ps}
-                    end
-                end,
-                Idns),
-            lists:flatten(Found)
-    end.
-
 %% @doc Intercept logons for users that have a primary email address matching the
 %% controlled domains of an OpenIDC provider. They should use the OIDC provider to log in.
-observe_auth_postcheck(#auth_postcheck{ service = mod_sso_openidc, service_uid = ServiceUid, id = Id }, Context) ->
-    MaybeEmail = m_rsc:p_no_acl(Id, <<"email_raw">>, Context),
-    case providers_for_domain(MaybeEmail, Context) of
+observe_auth_postcheck(#auth_postcheck{ service = mod_sso_openidc, service_uid = ServiceUid, id = UserId }, Context) ->
+    case m_sso_openidc:find_providers_controlling_user_id(UserId, Context) of
         [] -> undefined;
         ControllingProviders ->
             case binary:split(ServiceUid, <<":">>) of
                 [ServiceProvider, _] ->
                     % Fail if there is another service provider claiming control
-                    % of the user's email domain. This is an ambigous situation which
+                    % of the user's email domain. This is an ambiguous situation which
                     % should be fixed in the configuration.
                     case lists:any(
-                        fun(#{ <<"name">> := ProviderName }) ->
+                        fun(#{ name := ProviderName }) ->
                             case ServiceProvider =/= z_convert:to_binary(ProviderName) of
                                 true ->
                                     ?LOG_WARNING(#{
@@ -272,8 +261,8 @@ observe_auth_postcheck(#auth_postcheck{ service = mod_sso_openidc, service_uid =
                                         text => <<"Found controlling OIDC provider configuration for user">>,
                                         result => error,
                                         reason => user_external,
-                                        user_id => Id,
-                                        user_email => MaybeEmail,
+                                        user_id => UserId,
+                                        user_email => m_rsc:p_no_acl(UserId, <<"email_raw">>, Context),
                                         service_provider => ServiceProvider,
                                         controlling_provider => ProviderName
                                     }),
@@ -293,21 +282,11 @@ observe_auth_postcheck(#auth_postcheck{ service = mod_sso_openidc, service_uid =
                     {error, service_uid_invalid}
             end
     end;
-observe_auth_postcheck(#auth_postcheck{ id = Id }, Context) ->
-    MaybeEmail = m_rsc:p_no_acl(Id, <<"email_raw">>, Context),
-    case providers_for_domain(MaybeEmail, Context) of
+observe_auth_postcheck(#auth_postcheck{ id = UserId }, Context) ->
+    case m_sso_openidc:find_providers_controlling_user_id(UserId, Context) of
         [] -> undefined;
         _ControllingProviders -> {error, user_external}
     end.
-
-providers_for_domain(undefined, _Context) ->
-    [];
-providers_for_domain(<<>>, _Context) ->
-    [];
-providers_for_domain(EmailOrDomain, Context) ->
-    Domain = lists:last(binary:split(EmailOrDomain, <<"@">>, [ global, trim_all ])),
-    {ok, Providers} = m_sso_openidc:list_providers_for_domain(Domain, Context),
-    Providers.
 
 %% @doc Fetch the updateable properties of the provider edit form.
 %% The issuer_url, domain and name can not be changed.

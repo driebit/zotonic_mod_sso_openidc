@@ -27,6 +27,9 @@
 
     find_by_name/2,
 
+    find_providers_by_logon_username/2,
+    find_providers_controlling_user_id/2,
+
     list/1,
     list_auth_enabled/1,
 
@@ -133,6 +136,112 @@ m_get([ <<"is_user_external">> | Rest ], _Msg, Context) ->
     {ok, {is_user_external(z_acl:user(Context), Context), Rest}}.
 
 
+
+%% @doc Find all SSO providers this user CAN or MUST use for authentication. The user
+%% has entered their email address of username.
+-spec find_providers_by_logon_username(LogonUsername, Context) -> {ControllingProviders, OtherProviders} when
+    LogonUsername :: binary() | string(),
+    Context :: z:context(),
+    ControllingProviders :: [ Provider ],
+    OtherProviders :: [ Provider ],
+    Provider :: mod_sso_openidc:provider().
+find_providers_by_logon_username(LogonUsername, Context) ->
+    LogonUsername1 = normalize_email(z_convert:to_binary(LogonUsername)),
+    % If the logon-username is an email address, then check if that email address is controlled.
+    {ok, ControllersForUsernameAsEmail} = case is_email(LogonUsername1) of
+        true -> list_providers_for_domain(LogonUsername1, Context);
+        false -> {ok, []}
+    end,
+    % If the logon-username is a username, then check the user's primary email addres for
+    % controlled domains.
+    RscIdForUsername = case m_identity:lookup_by_username(LogonUsername1, Context) of
+        undefined -> undefined;
+        Idn -> proplists:get_value(rsc_id, Idn)
+    end,
+    {ok, ControllersForUsername} = if
+        is_integer(RscIdForUsername) ->
+            list_providers_for_domain(m_rsc:p_no_acl(RscIdForUsername, <<"email_raw">>, Context), Context);
+        true ->
+            {ok, []}
+    end,
+    % Find the list of providers where the users have an OIDC SSO and a matching email address or username
+    % in their identities. The email address must be a verified email address.
+    ConnectedSsoKeys = z_db:q("
+        select sso.key
+        from identity u,
+             identity sso
+        where u.type in ('email', 'username_pw')
+          and u.key = $1
+          and (u.type <> 'email' or u.is_verified)
+          and sso.type = 'oidc_sso'
+          and sso.rsc_id = u.rsc_id
+        ", [ LogonUsername1 ], Context),
+    ConnectedSsoNames = lists:usort(
+        lists:map(
+            fun({SsoIdnKey}) ->
+                [SsoProviderName, _] = binary:split(SsoIdnKey, <<":">>),
+                SsoProviderName
+            end, ConnectedSsoKeys)),
+    ConnectedAuthProviders = lists:filtermap(
+        fun(Name) ->
+            case find_by_name(Name, Context) of
+                {ok, #{
+                    is_enabled := true,
+                    is_use_auth := true,
+                    grant_type := GrantType
+                } = P} when GrantType =/= <<"client_credentials">> ->
+                    {true, P};
+                {ok, _} -> false;
+                {error, _} -> false
+            end
+        end, ConnectedSsoNames),
+    % Combine the two Controllers lists, remove them from the ConnectedAuthProviders list.
+    ControllersMap1 = lists:foldl(
+        fun(#{ id := PId } = P, Acc) ->
+            Acc#{ PId => P }
+        end,
+        #{},
+        ControllersForUsernameAsEmail),
+    ControllersMap2 = lists:foldl(
+        fun(#{ id := PId } = P, Acc) ->
+            Acc#{ PId => P }
+        end,
+        ControllersMap1,
+        ControllersForUsername),
+    Connected = lists:foldl(
+        fun(#{ id := PId} = P, Acc) ->
+            case maps:is_key(PId, ControllersMap2) of
+                true -> Acc;
+                false -> [P | Acc]
+            end
+        end,
+        [],
+        ConnectedAuthProviders),
+    {maps:values(ControllersMap2), Connected}.
+
+normalize_email(Email) ->
+    m_identity:normalize_key(email, Email).
+
+%% @doc Find all providers that are controlling the user. This is to prevent that the user
+%% is using a different means for logging in when they should use an external identity provider.
+%% For now we only check using the user's primary email address.
+-spec find_providers_controlling_user_id(UserId, Context) -> {ok, [Provider]} | {error, Reason} when
+    UserId :: m_rsc:resource_id() | undefined,
+    Context :: z:context(),
+    Provider :: map(),
+    Reason :: term().
+find_providers_controlling_user_id(UserId, Context) ->
+    list_providers_for_domain(m_rsc:p_no_acl(UserId, <<"email_raw">>, Context), Context).
+
+
+is_email(Username) ->
+    binary:match(<<"@">>, Username) =/= nomatch.
+
+email_domain(Email) ->
+    Email1 = normalize_email(Email),
+    lists:last(binary:split(Email1, <<"@">>, [global])).
+
+
 -spec is_user_external(UserId, Context) -> boolean() when
     UserId :: m_rsc:resource_id() | undefined,
     Context :: z:context().
@@ -143,7 +252,7 @@ is_user_external(Id, Context) ->
         undefined -> false;
         <<>> -> false;
         Email ->
-            Domain = z_string:to_lower(lists:last(binary:split(Email, <<"@">>, [global]))),
+            Domain = email_domain(Email),
             ProvId = z_db:q1("
                 select a.id
                 from sso_openidc_provider a
@@ -204,7 +313,7 @@ list_auth_enabled(Context) ->
     end.
 
 %% @doc List all providers that can be used for authentication.
--spec list_providers_auth( z:context() ) -> {ok, list( map() )} | {error, term()}.
+-spec list_providers_auth( z:context() ) -> {ok, list( mod_sso_openidc:provider() )} | {error, term()}.
 list_providers_auth(Context) ->
     z_db:qmap("
         select a.id, a.name, a.domain, a.description, a.is_use_import, a.is_use_auth, a.logo_url
@@ -213,11 +322,13 @@ list_providers_auth(Context) ->
           and a.is_enabled = true
           and a.grant_type <> 'client_credentials'
         order by a.priority, a.description, a.name, a.id",
+        [],
+        [ {keys, atom} ],
         Context).
 
 
 %% @doc List all providers that can be used for import.
--spec list_providers_import( z:context() ) -> {ok, list( map() )} | {error, term()}.
+-spec list_providers_import( z:context() ) -> {ok, list( mod_sso_openidc:provider() )} | {error, term()}.
 list_providers_import(Context) ->
     z_db:qmap("
         select a.id, a.name, a.domain, a.description, a.is_use_import, a.is_use_auth, a.logo_url
@@ -226,11 +337,13 @@ list_providers_import(Context) ->
           and a.is_enabled = true
           and a.grant_type <> 'client_credentials'
         order by a.priority, a.description, a.name, a.id",
+        [],
+        [ {keys, atom} ],
         Context).
 
 
 %% @doc List all providers that can be used for authentication or import.
--spec list_providers_all( z:context() ) -> {ok, list( map() )} | {error, term()}.
+-spec list_providers_all( z:context() ) -> {ok, list( mod_sso_openidc:provider() )} | {error, term()}.
 list_providers_all(Context) ->
     z_db:qmap("
         select a.id, a.name, a.domain, a.description, a.is_use_import, a.is_use_auth, a.grant_type, a.logo_url
@@ -240,13 +353,15 @@ list_providers_all(Context) ->
           and a.is_enabled = true
           and a.grant_type <> 'client_credentials'
         order by a.priority, a.description, a.name, a.id",
+        [],
+        [ {keys, atom} ],
         Context).
 
 %% @doc List all enabled providers that handle authentication for a domain.
 -spec list_providers_for_domain(Domain, Context) -> {ok, Providers} | {error, term()} when
     Domain :: binary() | string() | undefined,
     Context :: z:context(),
-    Providers :: list( map() ).
+    Providers :: list( mod_sso_openidc:provider() ).
 list_providers_for_domain(undefined, _Context) ->
     {ok, []};
 list_providers_for_domain(Domain, Context) ->
@@ -264,6 +379,7 @@ list_providers_for_domain(Domain, Context) ->
                 order by a.priority, a.description, a.name, a.id
                 ",
                 [ Domain1 ],
+                [ {keys, atom} ],
                 Context)
     end.
 
@@ -391,7 +507,7 @@ insert(Name, Domain, Context) ->
     Context :: z:context(),
     Reason :: term().
 update(Id, Provider, Context) ->
-    Args = to_record(Provider),
+    Args = to_binary_keys(Provider),
     Args1 = maps:without([ <<"user_id">> ], Args),
     Args2 = Args1#{
         <<"modified">> => calendar:universal_time()
@@ -452,7 +568,7 @@ maybe_map_name_to_atom({error, _} = Error) -> Error.
 map_name_to_atom(#{ name := Name } = App) ->
     App#{ name => binary_to_atom(Name, utf8) }.
 
-to_record(OIDC) ->
+to_binary_keys(OIDC) ->
     #{
         <<"is_enabled">> => z_convert:to_bool(maps:get(is_enabled, OIDC, true)),
         <<"is_use_auth">> => z_convert:to_bool(maps:get(is_use_auth, OIDC, true)),
