@@ -149,8 +149,11 @@ find_providers_by_logon_username(LogonUsername, Context) ->
     LogonUsername1 = normalize_email(z_convert:to_binary(LogonUsername)),
     % If the logon-username is an email address, then check if that email address is controlled.
     {ok, ControllersForUsernameAsEmail} = case is_email(LogonUsername1) of
-        true -> list_providers_for_domain(LogonUsername1, Context);
-        false -> {ok, []}
+        true ->
+            Domain1 = email_domain(LogonUsername1),
+            list_providers_for_domain(Domain1, Context);
+        false ->
+            {ok, []}
     end,
     % If the logon-username is a username, then check the user's primary email addres for
     % controlled domains.
@@ -160,7 +163,8 @@ find_providers_by_logon_username(LogonUsername, Context) ->
     end,
     {ok, ControllersForUsername} = if
         is_integer(RscIdForUsername) ->
-            list_providers_for_domain(m_rsc:p_no_acl(RscIdForUsername, <<"email_raw">>, Context), Context);
+            Domain2 = email_domain(m_rsc:p_no_acl(RscIdForUsername, <<"email_raw">>, Context)),
+            list_providers_for_domain(Domain2, Context);
         true ->
             {ok, []}
     end,
@@ -231,12 +235,15 @@ normalize_email(Email) ->
     Provider :: map(),
     Reason :: term().
 find_providers_controlling_user_id(UserId, Context) ->
-    list_providers_for_domain(m_rsc:p_no_acl(UserId, <<"email_raw">>, Context), Context).
+    Domain = email_domain(m_rsc:p_no_acl(UserId, <<"email_raw">>, Context)),
+    list_providers_for_domain(Domain, Context).
 
 
 is_email(Username) ->
     binary:match(Username, <<"@">>) =/= nomatch.
 
+email_domain(undefined) ->
+    undefined;
 email_domain(Email) ->
     Email1 = normalize_email(Email),
     lists:last(binary:split(Email1, <<"@">>, [global])).
@@ -316,7 +323,8 @@ list_auth_enabled(Context) ->
 -spec list_providers_auth( z:context() ) -> {ok, list( mod_sso_openidc:provider() )} | {error, term()}.
 list_providers_auth(Context) ->
     z_db:qmap("
-        select a.id, a.name, a.domain, a.description, a.is_use_import, a.is_use_auth, a.logo_url
+        select a.id, a.name, a.domain, a.description, a.is_use_import, a.is_use_auth,
+               a.logo_url, a.priority
         from sso_openidc_provider a
         where a.is_use_auth = true
           and a.is_enabled = true
@@ -346,7 +354,8 @@ list_providers_import(Context) ->
 -spec list_providers_all( z:context() ) -> {ok, list( mod_sso_openidc:provider() )} | {error, term()}.
 list_providers_all(Context) ->
     z_db:qmap("
-        select a.id, a.name, a.domain, a.description, a.is_use_import, a.is_use_auth, a.grant_type, a.logo_url
+        select a.id, a.name, a.domain, a.description, a.is_use_import, a.is_use_auth, a.grant_type,
+               a.logo_url, a.priority
         from sso_openidc_provider a
         where (   a.is_use_auth = true
                or a.is_use_import = true)
@@ -370,7 +379,8 @@ list_providers_for_domain(Domain, Context) ->
             {ok, []};
         Domain1 ->
             z_db:qmap("
-                select a.id, a.name, a.domain, a.description, a.is_use_import, a.is_use_auth, a.grant_type, a.logo_url
+                select a.id, a.name, a.domain, a.description, a.is_use_import, a.is_use_auth, a.grant_type,
+                       a.logo_url, a.priority
                 from sso_openidc_provider a
                 where a.is_use_auth = true
                   and a.is_enabled = true
