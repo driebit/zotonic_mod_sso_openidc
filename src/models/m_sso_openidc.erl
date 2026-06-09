@@ -138,7 +138,7 @@ m_get([ <<"is_user_external">> | Rest ], _Msg, Context) ->
 
 
 %% @doc Find all SSO providers this user CAN or MUST use for authentication. The user
-%% has entered their email address of username.
+%% has entered their email address or username.
 -spec find_providers_by_logon_username(LogonUsername, Context) -> {ControllingProviders, OtherProviders} when
     LogonUsername :: binary() | string(),
     Context :: z:context(),
