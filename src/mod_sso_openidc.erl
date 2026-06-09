@@ -211,7 +211,7 @@ observe_logon_options(#logon_options{
             % No providers controlling the email domain or matching the username, continue
             % with normal logon options.
             Acc;
-        {ControllingProviders, _} ->
+        {[_|_] = ControllingProviders, _} ->
             % There are providers controlling this email domain or matching user's email domains.
             % The user is not allowed to log in using another method than one of the given providers.
             Acc#{
@@ -245,8 +245,8 @@ observe_logon_options(#logon_options{}, Acc, _Context) ->
 %% controlled domains of an OpenIDC provider. They should use the OIDC provider to log in.
 observe_auth_postcheck(#auth_postcheck{ service = mod_sso_openidc, service_uid = ServiceUid, id = UserId }, Context) ->
     case m_sso_openidc:find_providers_controlling_user_id(UserId, Context) of
-        [] -> undefined;
-        ControllingProviders ->
+        {ok, []} -> undefined;
+        {ok, ControllingProviders} ->
             case binary:split(ServiceUid, <<":">>) of
                 [ServiceProvider, _] ->
                     % Fail if there is another service provider claiming control
@@ -280,12 +280,15 @@ observe_auth_postcheck(#auth_postcheck{ service = mod_sso_openidc, service_uid =
                     end;
                 _ ->
                     {error, service_uid_invalid}
-            end
+            end;
+        {error, _} = Error ->
+            Error
     end;
 observe_auth_postcheck(#auth_postcheck{ id = UserId }, Context) ->
     case m_sso_openidc:find_providers_controlling_user_id(UserId, Context) of
-        [] -> undefined;
-        _ControllingProviders -> {error, user_external}
+        {ok, []} -> undefined;
+        {ok, _ControllingProviders} -> {error, user_external};
+        {error, _} = Error -> Error
     end.
 
 %% @doc Fetch the updateable properties of the provider edit form.
