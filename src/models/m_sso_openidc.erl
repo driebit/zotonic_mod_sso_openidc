@@ -235,7 +235,7 @@ find_providers_controlling_user_id(UserId, Context) ->
 
 
 is_email(Username) ->
-    binary:match(<<"@">>, Username) =/= nomatch.
+    binary:match(Username, <<"@">>) =/= nomatch.
 
 email_domain(Email) ->
     Email1 = normalize_email(Email),
