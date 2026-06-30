@@ -201,11 +201,25 @@ observe_auth_identity_types(#auth_identity_types{ type = _ }, Types, _Context) -
 observe_logon_options(#logon_options{
             payload = #{
                 <<"username">> := Username,
+                <<"is_username_check">> := true
+            }
+        },
+        Acc,
+        Context) when is_binary(Username) ->
+    logon_options_check(Username, Acc, Context);
+observe_logon_options(#logon_options{
+            payload = #{
+                <<"username">> := Username,
                 <<"password">> := undefined
             }
         },
         Acc,
         Context) when is_binary(Username) ->
+    logon_options_check(Username, Acc, Context);
+observe_logon_options(#logon_options{}, Acc, _Context) ->
+    Acc.
+
+logon_options_check(Username, Acc, Context) ->
     case m_sso_openidc:find_providers_by_logon_username(Username, Context) of
         {[], []} ->
             % No providers controlling the email domain or matching the username, continue
@@ -237,9 +251,8 @@ observe_logon_options(#logon_options{
                     }
                 ]
             }
-    end;
-observe_logon_options(#logon_options{}, Acc, _Context) ->
-    Acc.
+    end.
+
 
 %% @doc Intercept logons for users that have a primary email address matching the
 %% controlled domains of an OpenIDC provider. They should use the OIDC provider to log in.

@@ -3,7 +3,7 @@
         {% if app.priority != 99 %}
             {% with app.id as app_id %}
             {% if is_connect and m.oauth2_consumer.is_connected[app.name] %}
-                <li>
+                <div>
                     <a id="{{ #oidcdis.app_id }}"
                        href="#disconnect"
                        class="btn z-btn-social"
@@ -21,11 +21,11 @@
                                             action={auth_disconnect id=m.acl.user type="mod_sso_openidc" keyprefix=app.name}
                                     }
                     %}
-                </li>
+                </div>
             {% elseif (not is_connect and app.is_use_auth)
                    or (    is_connect and (app.is_use_import or app.is_use_auth))
              %}
-                 <li>
+                 <div>
                     <a href="{% url oauth2_oidc_authorize is_connect=is_connect provider=app.name %}"
                        class="btn z-btn-social"
                        style="background-color: #fef8f8; color: #333;"
@@ -37,7 +37,7 @@
                         {% if is_connect %}{_ Connect with _} {{ app.description|escape }}
                         {% else %}{_ Log in with _} {{ app.description|escape }}{% endif %}
                     </a>
-                </li>
+                </div>
             {% endif %}
             {% endwith %}
         {% endif %}

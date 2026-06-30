@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:120
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:121
 msgid ""
 "Add a username/password on signup. A new user will be able to logon with "
 "a username/password."
@@ -37,13 +37,13 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:125
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:126
 msgid ""
 "Allow import of content from the remote website"
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:102
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:103
 msgid ""
 "Allow users on the remote website to authenticate here (using "
 "“{code}”)"
@@ -64,7 +64,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:112
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:113
 msgid ""
 "An email address must be provided to be able to log in"
 msgstr ""
@@ -83,7 +83,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:129
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:130
 msgid ""
 "Automatically extend tokens obtained using “{client}” before they "
 "expire"
@@ -104,21 +104,21 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:60
 #: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:61
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:62
 msgid ""
 "Client ID"
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:69
 #: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:70
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:71
 msgid ""
 "Client Secret"
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:36
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:37
 #: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:36
 msgid ""
 "Connect with"
@@ -144,8 +144,8 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:157
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:183
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:158
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:184
 msgid ""
 "Could not load the OpenID configuration at the domain."
 msgstr ""
@@ -190,8 +190,8 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:17
-#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:19
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:18
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:20
 #: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:17
 #: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:19
 msgid ""
@@ -199,7 +199,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:14
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:15
 #: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:14
 msgid ""
 "Disconnect from"
@@ -212,7 +212,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:18
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:19
 #: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:18
 msgid ""
 "Do you want to disconnect your account?"
@@ -225,8 +225,8 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:198
 #: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:199
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:200
 msgid ""
 "Domains"
 msgstr ""
@@ -250,13 +250,13 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:164
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:165
 msgid ""
 "Elevated ACR values"
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:165
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:166
 msgid ""
 "Elevated Authentication Context Class References for using this provider."
 msgstr ""
@@ -274,21 +274,27 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:214
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:40
+msgid ""
+"Hide button"
+msgstr ""
+""
+
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:215
 msgid ""
 "If the OIDC login is a new signup then this will be the category of the "
 "newly created user resource. Defaults to <tt>person</tt>."
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:192
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:193
 msgid ""
 "If the server does not return the organization and the returned email "
 "address is verified, then the email domain is used as organization."
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:139
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:140
 msgid ""
 "Information we request access to. Defaults to <tt>openid email</tt>."
 msgstr ""
@@ -314,15 +320,15 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:37
+#: zotonic_mod_sso_openidc/priv/templates/_logon_extra_sso_openidc.tpl:38
 #: zotonic_mod_sso_openidc/priv/templates/_oidc_logon_external.tpl:37
 msgid ""
 "Log in with"
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:51
 #: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:52
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:53
 msgid ""
 "Logo URL or path"
 msgstr ""
@@ -342,13 +348,13 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:179
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:180
 msgid ""
 "No supported ACR values found."
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:153
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:154
 msgid ""
 "No supported scopes found."
 msgstr ""
@@ -385,14 +391,14 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:190
 #: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:191
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:192
 msgid ""
 "Organizations"
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:192
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:193
 msgid ""
 "Organizations acceptable for authentication using this OpenID provider. "
 "One of these must match the returned <tt>shacHomeOrganization</tt>. "
@@ -425,13 +431,13 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:138
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:139
 msgid ""
 "Scopes requested"
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:205
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:206
 msgid ""
 "Signup category"
 msgstr ""
@@ -443,7 +449,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:200
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:201
 msgid ""
 "The email domains this provider should handle. Users with one of these "
 "domains as their primary email address will be redirected to this "
@@ -457,7 +463,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:89
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:90
 msgid ""
 "The “{code}” method redirects the user to the remote website to "
 "obtain an access token. “{client}” allows an admin user to directly "
@@ -471,7 +477,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:98
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:99
 msgid ""
 "This is a test server, will only be available on development and test "
 "sites"
@@ -485,7 +491,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:108
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:109
 msgid ""
 "This server provides additional user information, like the user’s name "
 "and email address"
@@ -498,13 +504,13 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:78
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:79
 msgid ""
 "Token grant method"
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:116
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:117
 msgid ""
 "Trust that all email addresses are verified by the server’s "
 "administrator."
@@ -556,7 +562,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:81
+#: zotonic_mod_sso_openidc/priv/templates/_oidc_provider_fields.tpl:82
 msgid ""
 "default"
 msgstr ""
