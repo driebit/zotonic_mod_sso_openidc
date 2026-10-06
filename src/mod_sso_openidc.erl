@@ -26,6 +26,112 @@
 %% limitations under the License.
 
 -module(mod_sso_openidc).
+-moduledoc(#{
+    zotonic_keywords => [
+        "reference", "site_administrator", "module", "authentication", "identity_and_accounts",
+        "oauth_2_0", "api_and_integration", "configuration", "authorization_and_access_control"
+    ]
+}).
+-moduledoc("
+Add OpenID Connect (OIDC) single sign-on providers to Zotonic's logon and
+signup flow. Users authenticate at an external identity provider, and Zotonic
+links the provider's subject identifier to a local user identity.
+
+## Installation and provider setup
+
+Install `zotonic_mod_sso_openidc` in `apps_user` or as a project dependency and
+enable `mod_sso_openidc` on the site. The module depends on `mod_authentication`
+and uses the `oidcc` library declared in its `rebar.config`. Authorization and
+callback handling use Zotonic's OAuth2 service controllers.
+
+Open **Auth → OpenID Connect Providers** in the admin. Provider administration
+requires administrator access or the `use.mod_sso_openidc` permission. This
+permission controls configuration; it is not required for visitors to log in.
+
+1. Add a unique provider name and its discovery domain, without the `https://`
+   prefix. Discovery fetches `https://<domain>/.well-known/openid-configuration`.
+2. Register the Zotonic site as a client at the provider. Register the absolute
+   callback URL returned by `mod_sso_openidc:return_url(Context)` as its redirect
+   URI. This uses the `oauth2_service_redirect` dispatch rule without a language
+   prefix.
+3. Enter the client ID and client secret, a display description, and optionally
+   a logo. Enable the provider and allow authentication.
+4. Choose a display priority. Priority `99` omits the provider from the standard
+   extra logon buttons; newly added providers start with this priority and are
+   disabled until configured.
+
+The admin form keeps the provider name, discovery domain, and issuer fixed after
+creation. Provider settings are stored in the `sso_openidc_provider` database
+table rather than ordinary module configuration keys.
+
+## Authentication and signup settings
+
+The implemented browser logon uses Authorization Code Flow: the browser returns
+an authorization code, which the server exchanges through `oidcc`. The admin
+form does not enable Client Credentials as an alternative browser logon flow.
+
+* **Scopes** select requested claims. `openid` is always included. An empty
+  scope configuration falls back to `openid email`; newly created provider
+  records start with `openid email email_verified profile`.
+* **Additional user information** enables retrieval from the provider's UserInfo
+  endpoint to supplement ID-token claims.
+* **Require email** rejects logon without an email address.
+* **Trust verified email** treats returned email addresses as verified. Otherwise
+  verification follows the returned `email_verified` value, defaulting to false
+  when absent. The `verified_primary_email` claim is treated as verified.
+* **Add username/password on signup** requests a local username/password identity
+  for a new signup. Connecting an identity to an existing account does not
+  request this extra identity.
+* **Signup category** selects the new user resource category, defaulting to `person`.
+* **Elevated ACR values** configure requested authentication context classes.
+
+## Domain routing and organization restrictions
+
+The **Domains** field assigns primary email domains to a provider. The two-step
+logon uses these assignments to direct users to that provider. Authentication
+postchecks reject other authentication services for controlled users with
+`user_external`; conflicting provider assignments also prevent acceptance.
+
+The separate **Organizations** field restricts which organizations may log in.
+The module checks the `schac_home_organization` claim from the ID token or
+UserInfo. If it is absent, an email-domain fallback is used only when the
+provider's trust-verified-email setting is enabled and the email is verified.
+A nonmatching organization returns `organization`; a required missing email
+returns `email_required`. An empty organization list imposes no such restriction.
+
+## Identities and resource properties
+
+The validated authentication uses service `mod_sso_openidc` and a service UID
+of `provider:subject`, where `subject` is the provider's `sub` claim. Provider
+names therefore form part of the local identity key.
+
+| Claim | Zotonic value |
+| --- | --- |
+| `sub` | Provider-prefixed service UID |
+| `email` or `verified_primary_email` | Resource email and email identity |
+| `given_name` | `name_first` |
+| `family_name` | `name_surname` |
+| `name` | Resource title |
+
+The module returns an `auth_validated` record to Zotonic's authentication/signup
+integration. Existing identities can log in or be connected to the current user;
+new accounts follow the site's signup handling. Email identity verification is
+determined by the provider policy described above, not by SSO alone.
+
+## Integration points
+
+The module observes `admin_menu`, `auth_identity_types`, `logon_options`, and
+`auth_postcheck`. It supervises `oidcc` provider workers, starts them for enabled
+providers, and reloads their configuration after provider edits.
+
+Start authorization with the `oauth2_oidc_authorize` dispatch rule:
+
+```django
+<a href=\"{% url oauth2_oidc_authorize provider=provider.name %}\">Log in</a>
+```
+
+Use `m.sso_openidc.providers.list.auth` to obtain the public provider list.
+").
 -author("Driebit <tech@driebit.nl>").
 
 -mod_title("SSO OpenID Connect").

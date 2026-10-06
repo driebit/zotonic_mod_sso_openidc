@@ -18,6 +18,74 @@
 %% limitations under the License.
 
 -module(m_sso_openidc).
+-moduledoc(#{
+    zotonic_keywords => [
+        "reference", "backend_developer", "model", "authentication", "identity_and_accounts",
+        "oauth_2_0", "api_and_integration", "authorization_and_access_control"
+    ]
+}).
+-moduledoc("
+Expose OpenID Connect provider configuration and public provider choices to
+templates, and supply provider storage and logon lookup functions to Erlang.
+
+## Model reads
+
+| Path | Result | Access |
+| --- | --- | --- |
+| `providers.list.auth` | Enabled authentication providers | Public |
+| `providers.list.import` | Enabled import providers | Public |
+| `providers.list.all` | Enabled authentication or import providers | Public |
+| `providers.list` | Full stored provider records | Provider administration |
+| `providers.byid[id]` | One full provider record | Provider administration |
+| `provider[name].is_config_loaded` | Whether discovery configuration is available | Provider administration |
+| `provider[name].scopes_supported` | Discovered scopes, or an empty list if unspecified | Provider administration |
+| `provider[name].acr_values_supported` | Discovered ACR values, or an empty list if unspecified | Provider administration |
+| `is_user_external` | Whether the current user is controlled by an SSO provider | Current user |
+
+Provider administration means administrator access or `use.mod_sso_openidc`.
+Protected reads return `{error, eacces}` when unauthorized. Full provider
+records include client credentials and must not be exposed in public output.
+The public lists select display and routing fields only, omit credentials, and
+exclude Client Credentials providers. Results are ordered by priority,
+description, name, and ID.
+
+For example, render public authentication choices with:
+
+```django
+{% for provider in m.sso_openidc.providers.list.auth %}
+    <a href=\"{% url oauth2_oidc_authorize provider=provider.name %}\">
+        {{ provider.description|escape }}
+    </a>
+{% endfor %}
+```
+
+Custom templates can apply their own display choices; the module's standard
+extra logon buttons omit priority `99`. Escape provider text when rendering it.
+The model provides GET paths; provider mutations use the admin's signed
+postbacks rather than model POST paths.
+
+## Erlang API
+
+`list/1`, `fetch/2`, and `find_by_name/2` return full provider records.
+`list_providers_auth/1`, `list_providers_import/1`, and `list_providers_all/1`
+return the public subsets. `list_providers_for_domain/2` finds enabled
+authentication providers assigned to an email domain.
+
+`insert/3` accepts a provider name, discovery domain, and context. It fetches
+discovery metadata, stores the issuer, and creates a disabled provider,
+returning `{ok, Id}`. Duplicate names return `{error, duplicate_name}` and failed
+discovery returns `{error, oidc_config}`. `update/3` stores provider properties
+and reloads its worker configuration; `delete/2` removes the provider.
+
+These direct storage functions do not enforce the model-path authorization
+checks. Callers must check `is_authorized/1` before exposing full records or
+performing administrative mutations. The module's admin event handlers do so.
+
+`find_providers_by_logon_username/2` returns `{ControllingProviders, OtherProviders}`
+for a supplied email address or username. `find_providers_controlling_user_id/2`
+finds providers controlling a user's primary email domain. `is_user_external/2`
+uses that control information to identify externally managed users.
+").
 
 -export([
     m_get/3,
