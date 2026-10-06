@@ -57,7 +57,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:135
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:136
 msgid ""
 "An OpenID provider with this name already exists, please use another "
 "name."
@@ -131,14 +131,14 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:138
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:139
 msgid ""
 "Could not fetch the OpenID configuration from the domain."
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:140
-#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:165
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:141
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:166
 msgid ""
 "Could not insert the OpenID provider."
 msgstr ""
@@ -151,7 +151,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:153
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:154
 msgid ""
 "Could not update the OpenID provider."
 msgstr ""
@@ -238,7 +238,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:129
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:130
 msgid ""
 "Edit OpenID provider details"
 msgstr ""
@@ -372,7 +372,7 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:176
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:177
 msgid ""
 "OpenID Connect Providers"
 msgstr ""
@@ -541,9 +541,9 @@ msgid ""
 msgstr ""
 ""
 
-#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:143
-#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:156
-#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:168
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:144
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:157
+#: zotonic_mod_sso_openidc/src/mod_sso_openidc.erl:169
 msgid ""
 "You are not allowed to change OpenID provider."
 msgstr ""
