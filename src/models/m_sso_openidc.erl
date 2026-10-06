@@ -631,6 +631,7 @@ test_provider(Context) ->
         is_test_server => true,
         is_email_required => true,
         is_email_verified => false,
+        is_add_username_pw => false,
         has_userinfo => true,
         name => testprovider,
         description => <<"Test server">>,

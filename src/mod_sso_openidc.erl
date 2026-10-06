@@ -91,6 +91,7 @@
         is_retrieve_userinfo := boolean(),
         is_email_required := boolean(),
         is_email_verified := boolean(),
+        is_add_username_pw := boolean(),
         has_userinfo := boolean(),
         name := provider_name(),
         domain := binary(),
