@@ -1,121 +1,166 @@
-# mod_sso_openidc
+# zotonic_mod_sso_openidc
 
-OpenID Connect single sign-on identity support for the Zotonic framework.
+OpenID Connect (OIDC) single sign-on for Zotonic. Users authenticate at an external
+identity provider, and Zotonic links the provider's subject identifier to a local
+user identity. The module integrates with Zotonic's logon, signup, and account
+connection flows.
 
-## Scope
+## Installation
 
-This module provides Zotonic log-on Identities for OpenID Connect (OIDC) identity
-services, to enable users to log on using an external single sign-on (SSO) account.
+Place `zotonic_mod_sso_openidc` in Zotonic's `apps_user/` directory or add it as a
+project dependency, build Zotonic, and enable `mod_sso_openidc` on the site.
 
-## Configuration
+The module depends on `mod_authentication` and uses Zotonic's OAuth2 service
+controllers for authorization and callback handling. Its `rebar.config` declares
+the `oidcc` dependency with version constraint `~> 3.2.0`; use that declaration
+rather than installing an arbitrary latest version separately.
 
-In the admin there is a menu item _Auth_ > _OpenID Connect Providers_.
+## Configure a provider
 
-There it is possible to configure the various identity providers.
+Open **Auth → OpenID Connect Providers** in the admin. Provider administration
+requires administrator access or `use.mod_sso_openidc`. Visitors do not need that
+configuration permission to log in.
 
-You can use https://auth0.com for creating a test identity provider.
-They also have a playground to get insights in the OpenID Connect flow.
+1. Add a unique provider name and discovery domain, without the `https://` prefix.
+   The module fetches `https://<domain>/.well-known/openid-configuration` and stores
+   the discovered issuer.
+2. Register the Zotonic site as a client at the identity provider. Use the absolute
+   callback URL returned by `mod_sso_openidc:return_url(Context)` as the redirect
+   URI. This resolves the `oauth2_service_redirect` dispatch rule without a
+   language prefix.
+3. Enter the client ID, client secret, and display description. Optionally set a
+   logo URL.
+4. Enable the provider and allow authentication. Select a display priority other
+   than `99` to show it among the standard extra logon buttons. Newly created
+   providers are disabled and start at priority `99`.
+5. Configure scopes, email policy, and any domain or organization restrictions.
 
-## Dependencies and installation
+Provider records are stored in the `sso_openidc_provider` table. These are not
+ordinary module configuration keys. The admin form does not allow the provider
+name, discovery domain, or issuer to be changed after creation. Provider names
+form part of stored identity keys.
 
-For handling of certificates, jwt tokens and other crypto tasks this module aims
-to use the latest stable release of https://github.com/erlef/oidcc
+### Scopes and user information
 
-Current release used: `v3.2` or later.
+The module always requests `openid`. An empty scope configuration falls back to
+`openid email`; newly created provider records initially request
+`openid email email_verified profile`. The authorization helper also requests
+`email_verified` when advertised by the provider and `email` is requested.
 
-### Adding oidcc to zotonic as a dependency
+Enable additional user information to retrieve UserInfo and supplement ID-token
+claims. Elevated ACR values select requested authentication context classes;
+unsupported configured values cause authorization to fail with `acr_unsupported`.
 
-Check out the repository in `apps_user/` or add it as a dependency in `rebar.config`.
+### Email and signup policy
 
-## About OpenID Connect
+- **Require email** rejects authentication without an email address.
+- **Trust that all email addresses are verified** treats returned email addresses
+  as verified. Otherwise the module uses the returned `email_verified` value,
+  defaulting to false when absent. A `verified_primary_email` claim is treated
+  as verified.
+- **Add a username/password on signup** requests a local username/password
+  identity for new signups. It does not request one when connecting SSO to an
+  existing account.
+- **Signup category** selects the new resource category, defaulting to `person`.
 
-OpenID Connect specs are at https://openid.net/specs/openid-connect-core-1_0.html
+SSO does not, by itself, make an email identity verified. New accounts follow the
+site's existing signup handling.
 
-Three authentication flows exist:
-- Authorization Code Flow (uses a "code" in the authorization response; "response_type" = "code")
-- Implicit Flow (has an "id_token" and optionally "token" in the response; "response_type" = "id_token" or "id_token token")
-- Hybrid Flow (uses a combination of "code", and either "id_token" or "token", or both)
+### Domains and organizations
 
-We use **Authorization Code Flow*** because this is the preferred path when a client secret
-can be securily kept, in this case on our Zotonic server, see the specs in section 3.1:
+These fields serve different purposes:
 
-> The Authorization Code Flow returns an Authorization Code to the Client, which
-> can then exchange it for an ID Token and an Access Token directly. This provides
-> the benefit of not exposing any tokens to the User Agent and possibly other
-> malicious applications with access to the User Agent. The Authorization Server
-> can also authenticate the Client before exchanging the Authorization Code for
-> an Access Token. The Authorization Code flow is suitable for Clients that can
-> securely maintain a Client Secret between themselves and the Authorization Server.
+- **Domains** assigns primary email domains to a provider. The two-step logon
+  uses these assignments to direct users to that provider. Authentication
+  postchecks reject other services for controlled users with `user_external`.
+  Conflicting provider assignments also prevent acceptance.
+- **Organizations** restricts the organizations accepted from this provider. The
+  module checks the `schac_home_organization` claim from the ID token or UserInfo.
+  When the claim is absent, it uses the email domain only if the provider's
+  trust-verified-email setting is enabled and the email is verified. An empty
+  organization list imposes no organization restriction.
 
-Section 3.1.1 lists the process:
+Multiple values can be separated by commas, semicolons, spaces, or newlines.
 
-1. Client prepares an Authentication Request containing the desired request parameters.
-2. Client sends the request to the Authorization Server.
-3. Authorization Server Authenticates the End-User.
-4. Authorization Server obtains End-User Consent/Authorization.
-5. Authorization Server sends the End-User back to the Client with an Authorization Code.
-6. Client requests a response using the Authorization Code at the Token Endpoint.
-7. Client receives a response that contains an ID Token and Access Token in the response body.
-8. Client validates the ID token and retrieves the End-User's Subject Identifier.
+## Authentication flow
 
-## Technical background
+Browser logon uses Authorization Code Flow. Client Credentials is not enabled as
+an alternative browser logon flow in the admin form.
 
-### Integration into the Zotonic login/signup process
+1. The `oauth2_oidc_authorize` dispatch rule invokes
+   `controller_oauth2_service_authorize` with `z_oidc_oauth_service`.
+2. The service helper ensures the provider worker is running and asks `oidcc` to
+   construct the authorization URL with the callback, state, scopes, and any ACR
+   values.
+3. The user authenticates at the provider and returns through Zotonic's shared
+   OAuth2 callback with an authorization code.
+4. The service helper exchanges the code through `oidcc`, reads the validated
+   ID-token claims, and optionally fetches UserInfo.
+5. After checking email and organization requirements,
+   `z_oidc_oauth_service:auth_validated/3` returns an `auth_validated` record to
+   Zotonic's authentication/signup integration.
 
-1. `mod_authentication` observes `observe_auth_validated` notifications, sent by the
-   `do_auth_user/2` function in `mod_identity_oidc_or`. This function sets up an
-   `auth_validated` record, containing the following fields:
-   - `service` - `mod_sso_openidc`
-   - `service_uid` - ProviderName:SubjectID (openid `sub` claim, user id unique per provider)
-   - `service_props` - Contents of the token holding the authentication claims
-   - `props` - Zotonic Person properties derived from the claims
-2. The module `mod_authentication` looks up the user identity (`service_uid`) in the `identity` table
-3. if not found, the module tries a signup by sending a `signup` notification, with the
-   `email` claim as email identity in the `signup_props` field.
+The module supervises provider workers and reloads their configuration after
+provider edits. It observes `admin_menu`, `auth_identity_types`, `logon_options`,
+and `auth_postcheck`.
 
-### Authentication claims
+## Identities and claims
 
-This module expects to extract the following claims from the authentication
-token returned by the ID Provider and maps them to Zotonic `auth_validated`
-notification fields:
+SSO identities use type `mod_sso_openidc` and key `provider:subject`, where
+`provider` is the configured provider name and `subject` is the `sub` claim.
 
-- `sub` => `service_uid`
-- `email` => `props.email`
-- `given_name` => `props.name_first`
-- `family_name` => `props.name_surname`
-- `name` => `props.title`
+| Claim | Zotonic value |
+| --- | --- |
+| `sub` | Provider-prefixed `service_uid` |
+| `email` or `verified_primary_email` | Resource email and email identity |
+| `given_name` | `props.name_first` |
+| `family_name` | `props.name_surname` |
+| `name` | `props.title` |
 
-### Implementation
+The returned `auth_validated` record has `service = mod_sso_openidc`, resource
+properties in `props`, and email identities in `identities`. Its `service_props`
+is an empty list, not a copy of the token claims. `ensure_username_pw` follows
+the signup option, and `is_connect` distinguishes account connection from logon.
 
-```mermaid
-graph LR;
-mod(mod_identity_oidc)
-oidcc(oidcc library)
-idp(Identity Provider)
-redirect(Redirect controller)
-return(Return controller)
-type(Identity type)
-config(Configuration)
-mod -- provides --> redirect
-mod -- provides --> return
-mod -- provides --> identity
-identity -- refers to --> type
-type -- has a --> config
-config -- refers to --> idp
-redirect -- redirects to --> idp
-idp -- redirects to --> return
-oidcc -- has --> registry
-registry -- holds list of --> idp
+## Templates and model API
+
+Use the public provider list to render authentication links:
+
+```django
+{% for provider in m.sso_openidc.providers.list.auth %}
+    <a href="{% url oauth2_oidc_authorize provider=provider.name %}">
+        {{ provider.description|escape }}
+    </a>
+{% endfor %}
 ```
 
-## Notes on Identities
+The public `providers.list.auth`, `providers.list.import`, and `providers.list.all`
+paths return enabled provider display/routing fields without client credentials.
+The standard logon template additionally omits priority `99`; custom templates
+can make their own display choices.
 
-- The SSO identities are stored in an identity with type `mod_sso_openidc` and key
-  `myprovider$subject` where _myprovider_ is the name given to the OpenIDC configuration
-  used, and _subject_ is the unique id of the user at the provider.
-- The module `mod_admin_identity` automatically creates email identities if an email
-  address is added to a `person` or `institution` resource.
-- Validation of uniqueness of email address with signup should only fail on
-  verified email addresses
-- Signup via SSO should imply a verified email address (if the login claims
-  returned contain an email address).
+Full records from `providers.list` and `providers.byid[id]`, and discovery reads
+under `provider[name]`, require provider-administration permission. Full records
+include client credentials and must not be exposed in public output.
+`m.sso_openidc.is_user_external` indicates whether the current user's primary
+email domain is controlled by an enabled authentication provider.
+
+Direct Erlang storage functions in `m_sso_openidc` do not enforce these model-path
+ACL checks. Administrative callers must check `m_sso_openidc:is_authorized/1`.
+See the module and model `-moduledoc` documentation for the full interface.
+
+## Troubleshooting
+
+- **Provider cannot be added:** check its discovery domain and HTTPS discovery
+  response. A duplicate name returns `duplicate_name`; failed discovery returns
+  `oidc_config`.
+- **No logon button:** check that the provider is enabled for authentication and
+  its display priority is not `99`.
+- **Callback rejected:** compare the registered redirect URI with
+  `mod_sso_openidc:return_url(Context)` for the site.
+- **`email_required`:** the configured policy requires an email, but none was
+  available in the claims or UserInfo.
+- **`organization`:** the organization restriction did not match.
+- **`user_external`:** check domain assignments and which provider authenticated
+  the user, including conflicting assignments.
+- **`acr_unsupported`:** check the selected ACR values against provider discovery.
